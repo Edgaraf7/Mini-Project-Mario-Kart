@@ -1,0 +1,122 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(./files/backgroundMario.jpeg);
+  background-position: bottom;
+  background-repeat: repeat-x;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+header img {
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+button {
+  margin-top: 20px;
+  font-size: xx-large;
+  color: #fff;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.btn-go {
+  background-color: rgb(39, 164, 54);
+}
+
+.btn-reset {
+  background-color: rgb(255, 0, 0);
+}
+
+.selectPlayer {
+  display: inline-block;
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 40px;
+  margin-top: 20px;
+  color: white;
+  text-shadow: black 2px 2px 5px;
+}
+
+.car-section {
+  text-align: left;
+  position: absolute;
+  bottom: 105px;
+}
+
+.car-section div {
+  width: 150px;
+  height: 150px;
+  background-image: url(./files/selectPlayer.png);
+  background-size: cover;
+}
+
+.playersImages:hover {
+  width: 120px;
+  background-color: rgba(255, 225, 0, 0.8);
+  border: 8px outset red;
+}
+
+.alternative-car1 {
+  background-image: url(./files/yoshi.png);
+}
+
+.alternative-car2 {
+  background-image: url(./files/peach.png);
+}
+
+.alternative-car3 {
+  background-image: url(./files/mario.png);
+}
+
+.alternative-car4 {
+  background-image: url(./files/luigi.png);
+}
+
+.alternatives {
+  margin-top: 20px;
+}
+
+.selected {
+  border: 8px outset red;
+  background-color: rgba(255, 174, 0, 0.5);
+}
+
+.small {
+  font-size: 20px;
+}
+
+#victory-counter {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 24px;
+  color: white;
+  text-shadow: black 2px 2px 5px;
+  margin-top: 20px;
+}
+
+#victory-counter p {
+  margin-bottom: 10px;
+}
+
+#victory-counter span {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+footer {
+  font-family: 'Luckiest Guy', cursive;
+  font-size: 24px;
+  color: white;
+  text-shadow: black 2px 2px 5px;
+  position: fixed; /* Fixa o rodapé na tela */
+  bottom: 0; /* Define a posição do rodapé na parte inferior */
+  width: 100%; /* Garante que o rodapé ocupe toda a largura */
+  padding: 20px; /* Adiciona um espaçamento interno */
+}
+
