@@ -7,6 +7,8 @@ window.onload = () => {
   const audioWinner = document.getElementById('audioWinner');
   const player1WinsDisplay = document.getElementById('player1-wins');
   const player2WinsDisplay = document.getElementById('player2-wins');
+  const player1Trophy = document.getElementById('player1-trophy');
+  const player2Trophy = document.getElementById('player2-trophy');
   const rules = document.getElementById('rules'); // Adicionado
 
   let player1Wins = 0;
@@ -37,6 +39,10 @@ window.onload = () => {
             alert('PLAYER 1 GANHOU!');
             player1Wins += 2;
             player1WinsDisplay.textContent = player1Wins;
+            // Adiciona emoji de troféu ao jogador 1
+            player1Trophy.textContent = player1Wins > player2Wins ? '🏆' : '';
+            // Remove emoji de troféu do jogador 2
+            player2Trophy.textContent = player2Wins > player1Wins ? '🏆' : '';
           }
           resetCars();
           clearInterval(intervalId);
@@ -53,6 +59,10 @@ window.onload = () => {
             alert('PLAYER 2 GANHOU!');
             player2Wins += 2;
             player2WinsDisplay.textContent = player2Wins;
+            // Adiciona emoji de troféu ao jogador 2
+            player2Trophy.textContent = player2Wins > player1Wins ? '🏆' : '';
+            // Remove emoji de troféu do jogador 1
+            player1Trophy.textContent = player1Wins > player2Wins ? '🏆' : '';
           }
           resetCars();
           clearInterval(intervalId);
@@ -96,6 +106,9 @@ window.onload = () => {
       player2WinsDisplay.textContent = player2Wins;
       // Mostra as regras novamente ao clicar em resetar
       rules.style.display = 'block';
+      // Remover emojis de troféu ao resetar
+      player1Trophy.textContent = '';
+      player2Trophy.textContent = '';
     }
   });
 
