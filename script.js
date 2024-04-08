@@ -9,7 +9,8 @@ window.onload = () => {
   const player2WinsDisplay = document.getElementById('player2-wins');
   const player1Trophy = document.getElementById('player1-trophy');
   const player2Trophy = document.getElementById('player2-trophy');
-  const rules = document.getElementById('rules'); // Adicionado
+  const rules = document.getElementById('rules');
+  const selectPlayerText = document.querySelector('.selectPlayer');
 
   let player1Wins = 0;
   let player2Wins = 0;
@@ -18,13 +19,24 @@ window.onload = () => {
   player1.style.marginLeft = 0;
   player2.style.marginLeft = 0;
 
+  // Função para exibir mensagem na tela
+  function showMessage(message) {
+    // Salva o conteúdo original do selectPlayerText
+    const originalContent = selectPlayerText.innerHTML;
+    // Substitui o conteúdo pelo texto da mensagem
+    selectPlayerText.innerHTML = message;
+
+    setTimeout(() => {
+      // Restaura o conteúdo original após 1 segundo
+      selectPlayerText.innerHTML = originalContent;
+    }, 1000); // Remove a mensagem após 1 segundo
+  }
+
   startBtn.addEventListener('click', () => {
     if (!raceInProgress) {
       raceInProgress = true;
       startBtn.disabled = true;
       resetBtn.disabled = true;
-
-      // Oculta as regras ao clicar em iniciar
       rules.style.display = 'none';
 
       const intervalId = setInterval(() => {
@@ -36,12 +48,10 @@ window.onload = () => {
         if (player1Win && player1Wins < player2Wins + 2) {
           if (!player2Win) {
             audioWinner.play();
-            alert('PLAYER 1 GANHOU!');
+            showMessage('PLAYER 1 GANHOU!');
             player1Wins += 2;
             player1WinsDisplay.textContent = player1Wins;
-            // Adiciona emoji de troféu ao jogador 1
             player1Trophy.textContent = player1Wins > player2Wins ? '🏆' : '';
-            // Remove emoji de troféu do jogador 2
             player2Trophy.textContent = player2Wins > player1Wins ? '🏆' : '';
           }
           resetCars();
@@ -49,19 +59,16 @@ window.onload = () => {
           raceInProgress = false;
           startBtn.disabled = false;
           resetBtn.disabled = false;
-          // Mostra as regras novamente após a corrida
           rules.style.display = 'block';
         }
 
         if (player2Win && player2Wins < player1Wins + 2) {
           if (!player1Win) {
             audioWinner.play();
-            alert('PLAYER 2 GANHOU!');
+            showMessage('PLAYER 2 GANHOU!');
             player2Wins += 2;
             player2WinsDisplay.textContent = player2Wins;
-            // Adiciona emoji de troféu ao jogador 2
             player2Trophy.textContent = player2Wins > player1Wins ? '🏆' : '';
-            // Remove emoji de troféu do jogador 1
             player1Trophy.textContent = player1Wins > player2Wins ? '🏆' : '';
           }
           resetCars();
@@ -69,13 +76,11 @@ window.onload = () => {
           raceInProgress = false;
           startBtn.disabled = false;
           resetBtn.disabled = false;
-          // Mostra as regras novamente após a corrida
           rules.style.display = 'block';
         }
 
-        // Adicionando condição de empate
         if (player1Win && player2Win) {
-          alert('EMPATE! 1 PONTO PARA CADA!');
+          showMessage('EMPATE! 1 PONTO PARA CADA!');
           player1Wins++;
           player2Wins++;
           player1WinsDisplay.textContent = player1Wins;
@@ -85,7 +90,6 @@ window.onload = () => {
           raceInProgress = false;
           startBtn.disabled = false;
           resetBtn.disabled = false;
-          // Mostra as regras novamente após a corrida
           rules.style.display = 'block';
         }
       }, 100);
@@ -104,9 +108,7 @@ window.onload = () => {
       player2Wins = 0;
       player1WinsDisplay.textContent = player1Wins;
       player2WinsDisplay.textContent = player2Wins;
-      // Mostra as regras novamente ao clicar em resetar
       rules.style.display = 'block';
-      // Remover emojis de troféu ao resetar
       player1Trophy.textContent = '';
       player2Trophy.textContent = '';
     }
